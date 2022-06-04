@@ -37,7 +37,7 @@ cargo run --features=gpu,x,virgl_renderer,virgl_renderer_next -- run \
     --cpus 4 \
     --mem 8192 \
     --disable-sandbox \
-    --gpu backend=virglrenderer,width=1920,height=1080 \
+    --gpu backend=virglrenderer,width=1920,height=1080,vulkan=true \
     --display-window-keyboard \
     --display-window-mouse \
     --tap-name crosvm_tap \
