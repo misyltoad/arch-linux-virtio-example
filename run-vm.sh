@@ -32,8 +32,17 @@ rm -rf "$kernelpath" || true
 mkdir -p "$kernelpath"
 virt-builder --get-kernel "$imagepath" -o "$kernelpath"
 
+# If you want to debug, set:
+#   --gdb 2042
+#   --cpus 1
+#
+# Then attach gdb to your kernel with `gdb vmlinuz-blah`
+# Then target remote:2042
+#
+# Feel free to change the port to whatever, this is just for convenience.
+
 pushd "$datapath/crosvm"
-cargo run --features=gpu,x,virgl_renderer,virgl_renderer_next -- run \
+cargo run --features=gpu,x,virgl_renderer,virgl_renderer_next,gdb -- run \
     --cpus 4 \
     --mem 8192 \
     --disable-sandbox \
